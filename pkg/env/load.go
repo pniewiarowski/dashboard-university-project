@@ -41,3 +41,7 @@ func GetMigration() bool {
 func GetPrivateKey() string {
 	return os.Getenv("REST_API_PRIVATE_KEY")
 }
+
+func GetRestUrl() string {
+	return os.Getenv("REST_API_BASE_URL")
+}

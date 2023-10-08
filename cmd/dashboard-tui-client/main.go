@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"dashboard/cmd/dashboard-tui-client/app"
+	"dashboard/pkg/env"
+)
 
 func main() {
-	fmt.Println("Dashboard Terminal UI Client")
+	env.Load(".env")
+
+	restUrl := env.GetRestUrl()
+
+	app.Run(restUrl)
 }
