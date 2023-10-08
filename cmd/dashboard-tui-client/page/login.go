@@ -6,25 +6,13 @@ import (
 	"github.com/rivo/tview"
 )
 
-func BuildRegisterForm(form *tview.Form) {
+func BuildLoginForm(form *tview.Form) {
 	user := model.User{}
 
 	form.SetBackgroundColor(tcell.ColorBlack)
 	form.SetBorder(true)
 	form.SetBorderColor(tcell.ColorDarkOrange)
 	form.SetTitle("Register Your Account")
-
-	form.AddInputField("First Name", "", 50, nil, func(firstName string) {
-		user.FirstName = firstName
-	})
-
-	form.AddInputField("Last Name", "", 50, nil, func(lastName string) {
-		user.LastName = lastName
-	})
-
-	form.AddInputField("Telephone", "", 50, nil, func(telephone string) {
-		user.Telephone = telephone
-	})
 
 	form.AddInputField("Email", "", 50, nil, func(email string) {
 		user.Email = email
@@ -34,11 +22,7 @@ func BuildRegisterForm(form *tview.Form) {
 		user.Password = password
 	})
 
-	form.AddCheckbox("Enable", false, func(enabled bool) {
-		user.Enable = enabled
-	})
-
-	form.AddButton("Submit", func() {
+	form.AddButton("Login", func() {
 
 	})
 }

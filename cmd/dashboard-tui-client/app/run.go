@@ -34,6 +34,13 @@ func Run(restUrl string) {
 				app.Stop()
 			}
 
+			if event.Rune() == ascii.KEY_LOWER_L {
+				formView.Clear(true)
+				page.BuildLoginForm(formView)
+
+				pages.SwitchToPage(FORM_PAGE)
+			}
+
 			if event.Rune() == ascii.KEY_LOWER_R {
 				formView.Clear(true)
 				page.BuildRegisterForm(formView)
@@ -47,7 +54,7 @@ func Run(restUrl string) {
 		if current == FORM_PAGE {
 			if event.Rune() == ascii.KEY_ESCAPE {
 				textView.Clear()
-				page.BuildMainMenuView(textView)
+				page.BuildMainMenuTextView(textView)
 
 				pages.SwitchToPage(MENU_PAGE)
 			}
@@ -58,7 +65,7 @@ func Run(restUrl string) {
 		return event
 	})
 
-	page.BuildMainMenuView(textView)
+	page.BuildMainMenuTextView(textView)
 	pages.SwitchToPage(MENU_PAGE)
 
 	log.Fatal(app.Run())

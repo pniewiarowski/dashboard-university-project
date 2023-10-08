@@ -6,7 +6,7 @@ import (
 	"github.com/rivo/tview"
 )
 
-func BuildMainMenuView(view *tview.TextView) {
+func BuildMainMenuTextView(view *tview.TextView) {
 	view.SetBackgroundColor(tcell.ColorBlack)
 	view.SetBorder(true)
 	view.SetBorderColor(tcell.ColorDarkOrange)
