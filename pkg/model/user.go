@@ -5,7 +5,7 @@ import (
 )
 
 type User struct {
-	EntityID  uint   `json:"entityID" gorm:"primaryKey"`
+	EntityID  uint   `json:"entity-id" gorm:"primaryKey"`
 	FirstName string `json:"first-name"`
 	LastName  string `json:"last-name"`
 	Telephone string `json:"telephone"`
