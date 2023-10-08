@@ -12,7 +12,7 @@ func BuildLoginForm(form *tview.Form) {
 	form.SetBackgroundColor(tcell.ColorBlack)
 	form.SetBorder(true)
 	form.SetBorderColor(tcell.ColorDarkOrange)
-	form.SetTitle("Register Your Account")
+	form.SetTitle("Login You Your Account")
 
 	form.AddInputField("Email", "", 50, nil, func(email string) {
 		user.Email = email
