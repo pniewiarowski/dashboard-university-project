@@ -1,3 +1,15 @@
-.env
+# IDE
 .idea
+
+# Enviroment
+.env
+
+# Database
 *.db
+
+# Builds
+/build/dashboard-server/*
+!/build/dashboard-server/.gitkeep
+
+/build/dashboard-tui/*
+!/build/dashboard-tui/.gitkeep
