@@ -1,21 +1,24 @@
 package page
 
 import (
+	"dashboard/pkg/model"
 	"fmt"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
 
-func BuildMainMenuTextView(view *tview.TextView) {
+func BuildDashboardTextView(view *tview.TextView, user model.User) {
 	view.SetBackgroundColor(tcell.ColorBlack)
 	view.SetBorder(true)
 	view.SetBorderColor(tcell.ColorDarkOrange)
-	view.SetTitle("Dashboard Project")
+	view.SetTitle("Dashboard - Main Menu")
 
 	options := []string{
-		"(l) login to your account",
-		"(r) or create account if you do not have one!",
-		"(ESC) exit from application",
+		fmt.Sprintf("-- Welcome %s %s! --", user.FirstName, user.LastName),
+		"(s) show all your projects",
+		"(a) add new project",
+		"(i) check your account",
+		"(l) logout",
 	}
 
 	render := ""
