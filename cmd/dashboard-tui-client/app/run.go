@@ -17,8 +17,9 @@ const (
 )
 
 type State struct {
-	IsLogged bool
-	User     model.User
+	IsLogged       bool
+	User           model.User
+	CurrentProject model.Project
 }
 
 func Run() {
@@ -50,6 +51,7 @@ func Run() {
 					page.BuildProjectList(listView, func(id uint) {
 						textView.Clear()
 						project, _ := projectRepository.GetByID(id)
+						state.CurrentProject = project
 						page.BuildProjectView(textView, project)
 						pages.SwitchToPage(MENU_PAGE)
 					})
@@ -66,6 +68,7 @@ func Run() {
 						page.BuildProjectList(listView, func(id uint) {
 							textView.Clear()
 							project, _ := projectRepository.GetByID(id)
+							state.CurrentProject = project
 							page.BuildProjectView(textView, project)
 							pages.SwitchToPage(MENU_PAGE)
 						})
@@ -75,18 +78,28 @@ func Run() {
 						page.BuildDashboardTextView(textView, state.User)
 						pages.SwitchToPage(MENU_PAGE)
 					})
-
 					pages.SwitchToPage(FORM_PAGE)
 				} else if event.Rune() == ascii.KEY_LOWER_L {
 					textView.Clear()
 					page.BuildAuthMenu(textView)
 					state.IsLogged = false
-
 					pages.SwitchToPage(MENU_PAGE)
 				} else if event.Rune() == ascii.KEY_LOWER_I {
 					textView.Clear()
 					page.BuildUserView(textView, state.User)
 					pages.SwitchToPage(MENU_PAGE)
+				} else if event.Rune() == ascii.KEY_LOWER_D {
+					projectRepository.Delete(state.CurrentProject)
+					state.CurrentProject = model.Project{}
+					listView.Clear()
+					page.BuildProjectList(listView, func(id uint) {
+						textView.Clear()
+						project, _ := projectRepository.GetByID(id)
+						state.CurrentProject = project
+						page.BuildProjectView(textView, project)
+						pages.SwitchToPage(MENU_PAGE)
+					})
+					pages.SwitchToPage(LIST_PAGE)
 				}
 
 				return event

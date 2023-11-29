@@ -34,3 +34,7 @@ func (_ *ProjectRepository) GetByID(id uint) (model.Project, error) {
 
 	return project, err
 }
+
+func (_ *ProjectRepository) Delete(project model.Project) {
+	database.DataBase.Delete(&model.Project{}, project.UUID)
+}

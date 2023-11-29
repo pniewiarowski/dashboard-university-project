@@ -71,6 +71,7 @@ func BuildProjectView(view *tview.TextView, project model.Project) {
 	}
 	render += fmt.Sprintf("Project Status:\t%s\n", project.Status)
 	render += fmt.Sprintf("Project Description:\t%s\n", project.Description)
+	render += "(d) to delete this project\n"
 	render += "(esc) to go back"
 
 	view.SetText(render)
